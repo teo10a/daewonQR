@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>충주시 가로등 수리 신고 시스템</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <!-- Ajax -->
+    <script type="text/javascript">
+
+
+    //쿼리 체크
+    window.onload = function (){
+    const url = new URL(window.location.href);
+    const urlParams = url.searchParams;
+    var xhr = new XMLHttpRequest();
+    if ( urlParams.has('lampid') === false){ //쿼리 없이 접근
+      alert('잘못된 접근입니다.');
+    } else { //쿼리가 있다면
+      //alert(urlParams.get('lampid'));
+
+    //인스턴스 체크
+     if(!xhr) {
+       alert('오류가 발생했습니다. \n 사유 : XMLHttp 인스턴스를 만들수 없음.');
+       return false;
+     }
+     //http request 시도
+     xhr.onreadystatechange = function (){
+
+      try {
+       if(xhr.readyState === XMLHttpRequest.done) {
+         if(xhr.status === 200){
+           //
+         } else {
+           alert('오류가 발생했습니다. \n 사유 : request에 문제가 있음. ');
+         }
+       }
+     } catch( e ) {
+        alert('오류가 발생했습니다. 사유 : ' + e.description );
+     }
+   }
+   xhr.open('POST','/a/chungju-si-lamp.json', 'true');
+   xhr.send();
+ }
+
+ };
+
+ function Getlocation(lampid){
+
+
+ }
+
+
+
+    </script>
+    <script src="https://cdnjs.com/libraries/sql.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
